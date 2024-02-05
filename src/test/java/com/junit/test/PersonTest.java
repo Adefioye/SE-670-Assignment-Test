@@ -10,6 +10,6 @@ public class PersonTest {
 
         Person person = new Person("Koko", 45);
 
-        assertThat(person.toString()).isEqualTo("Person{name='Koko', age=45}");
+        assertThat(person.toString()).isEqualTo("Person[name=Koko, age=45]");
     }
 }
