@@ -9,12 +9,12 @@ http://www.google.com/search?q=java is a valid URL
 https://www.amazon.com/dp/B08T7L8H86 is a valid URL
 http://www.nytimes.com/2024/04/20/technology/ai-language-models-benefits-risks.html is a valid URL
 https://github.com/openai/gpt-3 is a valid URL
-https://www.reddit.com/r/artificial/ is not a valid URL
+https://www.reddit.com/r/artificial/ is a valid URL
 https://www.coursera.org/browse/data-science is a valid URL
 https://www.linkedin.com/in/johndoe is a valid URL
 http://www.example.co.uk is a valid URL
 https://www.udemy.com/course/machine-learning-a-z is a valid URL
-https://www.apple.com/iphone/ is not a valid URL
-https://www.microsoft.com/en-us/ is not a valid URL
+https://www.apple.com/iphone/ is a valid URL
+https://www.microsoft.com/en-us/ is a valid URL
 https://www.netflix.com/browse is a valid URL
 http://www.example123.com/page is a valid URL

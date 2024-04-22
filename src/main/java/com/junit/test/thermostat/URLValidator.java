@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 
 public class URLValidator {
     public static void main(String[] args) {
-        // Regular expression for matching URLs
-        String regex = "(?i)\\b((?:https?|ftp)://[-\\w]+(?:\\.\\w[-\\w]*)+|(?i)www\\.[-\\w]+(?:\\.\\w[-\\w]*)+)(?::\\d+)?(?:/[^\\s]*)?\\b";
+        // The regex pattern to match URLs
+        String regex = "^(?:(?:http|https|ftp)://)?((?:www|ftp)\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$";
 
         // Array of URLs to validate
         String[] urls = {
