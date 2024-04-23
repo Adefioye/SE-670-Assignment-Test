@@ -75,22 +75,5 @@ public class URLValidator {
         // Validate URLs and save results to file
         urlValidator.validateURLsAndSaveToFile(List.of(urls), "url_validation_results.txt");
 
-//        // Validate each URL against the regular expression and save results to a file
-//        Pattern pattern = Pattern.compile(regex);
-//        try {
-//            FileWriter writer = new FileWriter("url_validation_results.txt");
-//            for (String url : urls) {
-//                Matcher matcher = pattern.matcher(url);
-//                if (matcher.matches()) {
-//                    writer.write(url + " is a valid URL\n");
-//                } else {
-//                    writer.write(url + " is not a valid URL\n");
-//                }
-//            }
-//            writer.close();
-//            System.out.println("Validation results saved to url_validation_results.txt");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
    }
 }
