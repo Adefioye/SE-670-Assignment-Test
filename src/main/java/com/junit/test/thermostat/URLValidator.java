@@ -1,11 +1,38 @@
 package com.junit.test.thermostat;
 
+import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class URLValidator {
+
+    private Pattern pattern;
+    public URLValidator(String regex) {
+        pattern = Pattern.compile(regex);
+    }
+    public boolean isValidURL(String url) {
+        Matcher matcher = pattern.matcher(url);
+        return matcher.matches();
+    }
+    public void validateURLsAndSaveToFile(List<String> urls, String outputFileName) {
+        try {
+            FileWriter writer = new FileWriter(outputFileName);
+            for (String url : urls) {
+                if (isValidURL(url)) {
+                    writer.write(url + " is a valid URL\n");
+                } else {
+                    writer.write(url + " is not a valid URL\n");
+                }
+            }
+            writer.close();
+            System.out.println("Validation results saved to " + outputFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         // The regex pattern to match URLs
         String regex = "^(?:(?:http|https|ftp)://)?((?:www|ftp)\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$";
@@ -34,22 +61,36 @@ public class URLValidator {
                 "http://www.example123.com/page"
         };
 
-        // Validate each URL against the regular expression and save results to a file
-        Pattern pattern = Pattern.compile(regex);
-        try {
-            FileWriter writer = new FileWriter("url_validation_results.txt");
-            for (String url : urls) {
-                Matcher matcher = pattern.matcher(url);
-                if (matcher.matches()) {
-                    writer.write(url + " is a valid URL\n");
-                } else {
-                    writer.write(url + " is not a valid URL\n");
-                }
-            }
-            writer.close();
-            System.out.println("Validation results saved to url_validation_results.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Create URLValidator instance
+        URLValidator urlValidator = new URLValidator(regex);
+
+        // Test invalid URL
+        String invalidURL = "http://-invalid-domain-.com/page";
+        if (urlValidator.isValidURL(invalidURL)) {
+            System.out.println(invalidURL + " is a valid URL");
+        } else {
+            System.out.println(invalidURL + " is not a valid URL");
         }
-    }
+
+        // Validate URLs and save results to file
+        urlValidator.validateURLsAndSaveToFile(List.of(urls), "url_validation_results.txt");
+
+//        // Validate each URL against the regular expression and save results to a file
+//        Pattern pattern = Pattern.compile(regex);
+//        try {
+//            FileWriter writer = new FileWriter("url_validation_results.txt");
+//            for (String url : urls) {
+//                Matcher matcher = pattern.matcher(url);
+//                if (matcher.matches()) {
+//                    writer.write(url + " is a valid URL\n");
+//                } else {
+//                    writer.write(url + " is not a valid URL\n");
+//                }
+//            }
+//            writer.close();
+//            System.out.println("Validation results saved to url_validation_results.txt");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+   }
 }
